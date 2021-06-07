@@ -129,19 +129,17 @@ function operadoresLogicos(num1, num2, num3) {
   //Si num3 es más grande que num1 y num2, aumentar su valor en 1 y retornar el nuevo valor.
   //0 no es ni positivo ni negativo. Si alguno de los argumentos es 0, retornar "Error".
   //Si no se cumplen ninguna de las condiciones anteriores, retornar false. 
-  if (num1 === 0 || num2 === 0 || num3 === 0 ){
-    return "Error";
-  }else if (num1 < 0 || num2 < 0 || num3 < 0 ){
+  if (num1 < 0 || num2 < 0 || num3 < 0 ){
     return "Hay negativos";
-  }
-  else if (num1 > num2 && num1 > num3 && num1 > 0){
+  }if (num1 === 0 || num2 === 0 || num3 === 0 ){
+    return "Error";
+  } 
+  if (num1 > num2 && num1 > num3){
     return "Número 1 es mayor y positivo";
-  }else if (num3 > 1 && num3 > 2){
+  } if (num3 > num1 && num3 > num2){
     return num3+1;
-  }else{
-    return false;
   }
-  // REVISAR ESTE QUE FALLA
+    return false;
 }
 
 function esPrimo(numero) {
@@ -150,14 +148,19 @@ function esPrimo(numero) {
   // Pista: un número primo solo es divisible por sí mismo y por 1
   // Pista 2: Puedes resolverlo usando un bucle `for`
   // Nota: Los números 0 y 1 NO son considerados números primos
-  //if (numero == 0 || numero == 1 || numero == 4) return false;
-	  /*for (i=2; i<numero;i++) {
+  // if (numero == 0 || numero == 1 || numero == 4) return false;
+	/*  for (let i=2; i<numero; i++) {
     if (numero%i===0){
     primo = false;}
-    else {return true;}
+    else {return true;}*/
+    if (numero === 0 || numero === 1) return false;
 
-}*/
-// REVISAR ESTE NO SALE
+    for (let i=2; i<numero; i++){
+      if (numero % i === 0){
+        return false;
+      }
+      else {return true;}
+    }
 }
 
 function esVerdadero(valor){
@@ -176,17 +179,17 @@ function tablaDelSeis(){
   //Escribe una función que muestre la tabla de multiplicar del 6 (del 0 al 60).
   //La función devuelve un array con los resultados de la tabla de multiplicar del 6 en orden creciente.
   //Escribe tu código aquí   
-  var myTable = [0,1,2,3,4,5,6,7,8,9,10]
-
-  for (let i = 0; i <= 10; i++){
-    return (myTable[i]*6);
-  }  
+  var myTable = []
+  for (let i = 0; i <= 60/*10*/; i=i+6 /*i++*/){
+    myTable.push(i/*i*6*/);
+  } 
+  return myTable;
 }
 
 function tieneTresDigitos(numero){
   //Leer un número entero y retornar true si tiene 3 dígitos. Caso contrario, retorna false.
   //Escribe tu código aquí
-  if (numero.toString().lenght == 3){
+  if (numero.toString().length == 3){
     return true;
   }else{
     return false;
